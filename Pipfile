@@ -14,4 +14,4 @@ psycopg2-binary = "==2.9.7"
 python_version = "3.11"
 
 [scripts]
-create-tables = "python database_connection/create_tables.py"
+create-tables = "python database/create_tables.py"
