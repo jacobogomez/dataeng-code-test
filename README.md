@@ -1,6 +1,6 @@
 # dataeng-code-test
 
-Implementation of a genetic algorithm designed to solve the Job Shop Scheduling Problem. Also included is a Web application prototype to use the GA from a Web browser. This is the final project for my undergraduate thesis at Universidad Nacional de Colombia.
+API used for a ETL system from CSV files to a SQL database, and execute specific queries against the database.
 
 ## Tech/framework used
 
@@ -31,7 +31,7 @@ Used to upload CSV files to the database. Endpoint parameters are as it follows:
 * `table`: One of `job`, `department` or `employee`. Schema for these tables can be seen in [`models.py`](database/models.py)
 * `start_row`: Integer between 1-1000, signals the start of the file that will be read.
 * `end_row`: Integer between 1-1000, signals the number of rows that will be read.
-* If one of start_row and end_row are not present, the file will be read in its entirety.
+* If one of `start_row` and `end_row` are not present, the file will be read in its entirety.
 
 ### `GET` - `/employee/department/job`
 
