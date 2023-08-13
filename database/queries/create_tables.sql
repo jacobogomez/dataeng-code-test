@@ -16,7 +16,5 @@ CREATE TABLE IF NOT EXISTS employee (
     datetime TIMESTAMP,
     department_id INTEGER,
     job_id INTEGER,
-    PRIMARY KEY (id),
-    FOREIGN KEY(department_id) REFERENCES department (id),
-    FOREIGN KEY(job_id) REFERENCES job (id)
+    PRIMARY KEY (id)
 );
