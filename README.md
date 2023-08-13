@@ -19,7 +19,7 @@ Built with `SQLAlchemy`, `FastAPI`, `pandas` and `PostgreSQL`. `ruff` was used f
 ## Use
 
 1) To create the tables used for the project, run `psql -d company -a -f database/queries/create_tables.sql`
-2) Rename [.env.example](.env.example) to `.env` and modify the variables to your connection data.
+2) Rename [`.env.example`](.env.example) to `.env` and modify the variables to your connection data.
 3) To run the API in developer mode type `pipenv run dev-api` in your terminal. For production environments `pipenv run api` should be used. This will give you a `uvicorn` web server at `localhost:8000`. `OpenAPI` docs can be seen at `localhost:8000/docs`.
 
 ## API Endpoints
