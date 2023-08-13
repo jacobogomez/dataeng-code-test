@@ -19,17 +19,18 @@ Built with `SQLAlchemy`, `FastAPI`, `pandas` and `PostgreSQL`. `ruff` was used f
 ## Use
 
 1) To create the tables used for the project, run `psql -d company -a -f database/queries/create_tables.sql`
-2) To run the API in developer mode type `pipenv run dev-api` in your terminal. For production environments `pipenv run api` should be used. This will give you a `uvicorn` web server at `localhost:8000`. `OpenAPI` docs can be seen at `localhost:8000/docs`.
+2) Rename [.env.example](.env.example) to `.env` and modify the variables to your connection data.
+3) To run the API in developer mode type `pipenv run dev-api` in your terminal. For production environments `pipenv run api` should be used. This will give you a `uvicorn` web server at `localhost:8000`. `OpenAPI` docs can be seen at `localhost:8000/docs`.
 
 ## API Endpoints
 
 ### `POST` - `/upload`
 
 Used to upload CSV files to the database. Endpoint parameters are as it follows:
-* file: Must be a `.csv` file
-* table: One of `job`, `department` or `employee`. Schema for these tables can be seen in [`models.py`](database/models.py)
-* start_row: Integer between 1-1000, signals the start of the file that will be read.
-* end_row: Integer between 1-1000, signals the number of rows that will be read.
+* `file`: Must be a `.csv` file
+* `table`: One of `job`, `department` or `employee`. Schema for these tables can be seen in [`models.py`](database/models.py)
+* `start_row`: Integer between 1-1000, signals the start of the file that will be read.
+* `end_row`: Integer between 1-1000, signals the number of rows that will be read.
 * If one of start_row and end_row are not present, the file will be read in its entirety.
 
 ### `GET` - `/employee/department/job`
