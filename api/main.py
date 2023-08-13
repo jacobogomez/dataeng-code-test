@@ -2,6 +2,8 @@ import io
 
 import pandas as pd
 from fastapi import FastAPI, Form, HTTPException, UploadFile
+from fastapi.responses import PlainTextResponse
+from sqlalchemy import text
 
 from database.database import engine
 from database.models import department, employee, job
@@ -33,12 +35,11 @@ async def root():
 async def create_upload_file(
     file: UploadFile,
     table: str = Form(),
-    start_row: int | None = Form(ge=1, le=1000),
-    end_row: int | None = Form(gt=1, le=1000),
+    start_row: int | None = Form(default=None, ge=1, le=1000),
+    end_row: int | None = Form(default=None, gt=1, le=1000),
 ):
     if table in tables_enum:
         content = await file.read()
-        conn = engine.connect()
         with io.BytesIO(content) as data:
             if "csv" in file.content_type:
                 if start_row and end_row:
@@ -59,6 +60,7 @@ async def create_upload_file(
             else:
                 raise HTTPException(status_code=400, detail="Invalid file")
         try:
+            conn = engine.connect()
             df.to_sql(
                 table,
                 schema="public",
@@ -73,3 +75,27 @@ async def create_upload_file(
         return {"Uploaded succesfully"}
     else:
         raise HTTPException(status_code=400, detail="Invalid table name")
+
+
+@app.get("/employee/department/job")
+async def root():
+    with engine.connect() as conn:
+        with open("database/queries/hirings_by_q.sql") as file:
+            query = text(file.read())
+            execution = conn.execute(query)
+            column_names = execution.keys()
+            result = execution.fetchall()
+            result_list = [dict(zip(column_names, row)) for row in result]
+    return PlainTextResponse(str(result_list))
+
+
+@app.get("/department/employee")
+async def root():
+    with engine.connect() as conn:
+        with open("database/queries/higher_than_avg.sql") as file:
+            query = text(file.read())
+            execution = conn.execute(query)
+            column_names = execution.keys()
+            result = execution.fetchall()
+            result_list = [dict(zip(column_names, row)) for row in result]
+    return PlainTextResponse(str(result_list))
