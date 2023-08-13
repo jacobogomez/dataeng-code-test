@@ -38,10 +38,11 @@ Used to upload CSV files to the database. Endpoint parameters are as it follows:
 Shows the result of the query [`hirings_by_q.sql`](database/queries/hirings_by_q.sql). Response is formatted as it follows:
 
 ```
-[{'department': 'Accounting', 'job': 'Account Representative IV', 'q1': 1, 'q2': 0, 'q3': 0, 'q4': 0}, 
-{'department': 'Accounting', 'job': 'Actuary', 'q1': 0, 'q2': 1, 'q3': 0, 'q4': 0}, 
-{'department': 'Accounting', 'job': 'Analyst Programmer', 'q1': 0, 'q2': 0, 'q3': 1, 'q4': 0}, 
-{'department': 'Accounting', 'job': 'Budget/Accounting Analyst III', 'q1': 0, 'q2': 1, 'q3': 0, 'q4': 0}, 
+[
+    {'department': 'Accounting', 'job': 'Account Representative IV', 'q1': 1, 'q2': 0, 'q3': 0, 'q4': 0}, 
+    {'department': 'Accounting', 'job': 'Actuary', 'q1': 0, 'q2': 1, 'q3': 0, 'q4': 0}, 
+    {'department': 'Accounting', 'job': 'Analyst Programmer', 'q1': 0, 'q2': 0, 'q3': 1, 'q4': 0}, 
+    {'department': 'Accounting', 'job': 'Budget/Accounting Analyst III', 'q1': 0, 'q2': 1, 'q3': 0, 'q4': 0}, 
 ...
 ```
 
@@ -50,10 +51,12 @@ Shows the result of the query [`hirings_by_q.sql`](database/queries/hirings_by_q
 Shows the result of the query [`higher_than_avg.sql`](database/queries/higher_than_avg.sql). Response is formatted as it follows:
 
 ```
-[{'id': 8, 'department': 'Support', 'hired': 221}, 
-{'id': 5, 'department': 'Engineering', 'hired': 208}
+[
+    {'id': 8, 'department': 'Support', 'hired': 221}, 
+    {'id': 5, 'department': 'Engineering', 'hired': 208}
 ...
 ```
 
 ## License
+
 This project is released under the [MIT License](https://choosealicense.com/licenses/mit/).
