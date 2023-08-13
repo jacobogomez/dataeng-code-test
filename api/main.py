@@ -26,11 +26,6 @@ def _upsert(table, conn, keys, data_iter):
     conn.execute(upsert_statement)
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
 @app.post("/upload")
 async def create_upload_file(
     file: UploadFile,
