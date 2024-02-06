@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 sqlalchemy = "2.0.19"
-fastapi = {version = "==0.101.0", extras = ["all"]}
+fastapi = {version = "==0.109.1", extras = ["all"]}
 psycopg2-binary = "==2.9.7"
 pandas = "==2.0.3"
 
